@@ -16,7 +16,7 @@ class Tablify():
             td_text = ""
 
             for x in xrange(self.size_x):
-                td_text += "<td id='b"+ str(x) + "-" + str(y) + "'>"
+                td_text += "<td width='0.9' height='0.9' id='b"+ str(x) + "-" + str(y) + "'>"
             self.table += td_text
             self.table += "</tr>"
 
@@ -32,8 +32,7 @@ class Tablify():
         for y in xrange(self.size_y):
             td_text = ""
             for x in xrange(self.size_x):
-                td_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + " {background-color: " + "rgba" + str(pixdata[x,y]) +";}\n"
-
-
+                td_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + \
+                        " {background-color: " + "rgba" + str(pixdata[x,y]) +";}\n"
             img_data += td_text
         return img_data
