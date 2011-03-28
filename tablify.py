@@ -7,6 +7,10 @@ class Tablify():
     def init(self, size_x, size_y):
         self.size_x = size_x
         self.size_y = size_y
+        self.styling = ""
+
+    def fill(self, color=(0,0,0,255)):
+        self.color = color
 
     def create_table(self):
         self.table += "<table cellspacing='0'>"
@@ -30,9 +34,22 @@ class Tablify():
         pixdata = img.load()
 
         for y in xrange(img.size[1]):
-            td_text = ""
+            style_text = ""
             for x in xrange(img.size[0]):
-                td_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + \
+                style_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + \
                         " {background-color: " + "rgba" + str(pixdata[x,y]) +";}\n"
-            img_data += td_text
-        return img_data
+            img_data += style_text
+        self.styling += img_data
+
+    def rect(self, pos_x,pos_y, size_x,size_y):
+        rect_data = ""
+
+        for y in xrange(size_y):
+            style_text = ""
+            for x in xrange(size_x):
+                style_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + " {background-color: " + "rgba" + str(self.color) + ";}\n"
+            rect_data += style_text
+        self.styling += rect_data
+
+    def style(self):
+        return self.styling

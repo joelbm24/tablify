@@ -2,13 +2,14 @@ import tablify, sys
 
 argv = sys.argv
 
-try:
-    name = argv[1].rsplit(".",1)[0]
-except:
-    name = argv[1]
+name = argv[1]
 
 tb = tablify.Tablify()
-tb.init(100,100)
+tb.init(300,300)
+tb.fill((255,0,0,255))
+tb.rect(0,0,300,300)
+tb.image('apple1.gif',125,125)
+
 
 html_top = """
 <!DOCTYPE html>
@@ -19,7 +20,7 @@ html_top = """
 </style>
 </head>
 <body>
-""" % (tb.image(argv[1],20,20))
+    """ % (tb.style())
 
 html_bottom = """
 </body>
