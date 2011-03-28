@@ -23,7 +23,7 @@ html_bottom = """
 </html>
 """
 
-f = open('test.html','w')
+f = open(img_name + '.html','w')
 f.write(html_top)
 f.write(tb.create_table())
 f.write(html_bottom)
