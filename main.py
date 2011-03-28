@@ -2,10 +2,13 @@ import tablify, sys
 
 argv = sys.argv
 
-img_name = argv[1].rsplit(".",1)[0]
+try:
+    name = argv[1].rsplit(".",1)[0]
+except:
+    name = argv[1]
 
 tb = tablify.Tablify()
-tb.init(50,50)
+tb.init(100,100)
 
 html_top = """
 <!DOCTYPE html>
@@ -23,7 +26,7 @@ html_bottom = """
 </html>
 """
 
-f = open(img_name + '.html','w')
+f = open(name + '.html','w')
 f.write(html_top)
 f.write(tb.create_table())
 f.write(html_bottom)

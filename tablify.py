@@ -29,9 +29,9 @@ class Tablify():
         img = img.convert("RGBA")
         pixdata = img.load()
 
-        for y in xrange(self.size_y):
+        for y in xrange(img.size[1]):
             td_text = ""
-            for x in xrange(self.size_x):
+            for x in xrange(img.size[0]):
                 td_text += "#b"+str(x+pos_x)+"-"+str(y+pos_y) + \
                         " {background-color: " + "rgba" + str(pixdata[x,y]) +";}\n"
             img_data += td_text
