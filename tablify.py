@@ -53,3 +53,26 @@ class Tablify():
 
     def style(self):
         return self.styling
+
+    def blit(self, name):
+        html_top = """
+        <!DOCTYPE html>
+        <head>
+        <title>%s</title>
+        <style type='text/css'>
+        %s
+        </style>
+        </head>
+        <body>
+            """ % (name, self.style())
+
+        html_bottom = """
+        </body>
+        </html>
+        """
+
+        f = open(name + '.html','w')
+        f.write(html_top)
+        f.write(self.create_table())
+        f.write(html_bottom)
+        f.close()
